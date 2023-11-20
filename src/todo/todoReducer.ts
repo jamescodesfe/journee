@@ -1,5 +1,5 @@
+import { ITEM_ADD, ITEM_EDIT, ITEM_REMOVE, ITEM_TOGGLE_COMPLETED, TodoAction } from "./todoAC";
 import { getNewId } from "../utils";
-import { ITEM_ADD, ITEM_EDIT, ITEM_REMOVE, TodoAction } from "./todoAC";
 
 type Item = {
   id: string;
@@ -15,10 +15,7 @@ const initialState: State = {
   items: [],
 };
 
-const todoReducer = (
-  state: State = initialState,
-  action: TodoAction
-): State => {
+const todoReducer = (state: State = initialState, action: TodoAction): State => {
   switch (action.type) {
     case ITEM_ADD:
       return {
@@ -44,6 +41,12 @@ const todoReducer = (
     case ITEM_REMOVE:
       return {
         items: state.items.filter((item) => item.id !== action.itemId),
+      };
+    case ITEM_TOGGLE_COMPLETED:
+      return {
+        items: state.items.map((item) =>
+            item.id === action.itemId ? { ...item, done: !item.done } : item
+        ),
       };
     default:
       return state;

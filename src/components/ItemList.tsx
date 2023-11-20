@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {addTodo, editTodo, removeTodo} from "../todo/todoAC";
+import { addTodo, editTodo, toggleCompleted, removeTodo } from "../todo/todoAC";
 import { useAppDispatch, useAppSelector } from "../types";
 
 const List = styled.ul`
@@ -15,11 +15,12 @@ const Item = styled.li`
   margin: 4px 0;
   display: flex;
   flex-direction: row;
-  align-items: center; /* Center items vertically */
+  align-items: center;
 `;
 
-const ItemInput = styled.input`
+const ItemInput = styled.input<{ completed?: boolean }>`
   width: 100%;
+  text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
 `;
 
 const ItemCheckbox = styled.input.attrs({
@@ -27,49 +28,25 @@ const ItemCheckbox = styled.input.attrs({
 })``;
 
 const DeleteButton = styled.button`
-  margin-left: 8px; /* Add some margin to separate the button from the input */
+  margin-left: 8px;
 `;
 
 const ItemList: React.FC = () => {
   const items = useAppSelector((s) => s.todos.items);
   const dispatch = useAppDispatch();
-
-  // State to track the input value for the new todo
   const [newTodoText, setNewTodoText] = useState<string>("");
 
-  // State to track the selected items for deletion
-  const [selectedItems, setSelectedItems] = useState<string[]>([]);
-
   const handleAddTodo = () => {
-    // Dispatch addTodo action with the input value
     dispatch(addTodo(newTodoText));
-
-    // Clear the input after adding the todo
     setNewTodoText("");
   };
 
   const handleToggleSelect = (itemId: string) => {
-    // Toggle the selected state for the item
-    setSelectedItems((prevSelectedItems) => {
-      if (prevSelectedItems.includes(itemId)) {
-        // Item is already selected, remove it from the selected list
-        return prevSelectedItems.filter((id) => id !== itemId);
-      } else {
-        // Item is not selected, add it to the selected list
-        return [...prevSelectedItems, itemId];
-      }
-    });
+    dispatch(toggleCompleted(itemId));
   };
 
-  const handleDeleteSelected = () => {
-    // Dispatch the delete action for each selected item
-    selectedItems.forEach((itemId) => {
-      // Dispatch the removeTodo action with the id of the todo to be deleted
-      dispatch(removeTodo(itemId));
-    });
-
-    // Clear the selected items after deleting
-    setSelectedItems([]);
+  const handleDeleteTodo = (itemId: string) => {
+    dispatch(removeTodo(itemId));
   };
 
   return (
@@ -78,17 +55,15 @@ const ItemList: React.FC = () => {
             <Item key={item.id}>
               <ItemCheckbox
                   onChange={() => handleToggleSelect(item.id)}
-                  checked={selectedItems.includes(item.id)}
+                  checked={item.done}
               />
               <ItemInput
                   type="text"
                   value={item.text}
+                  completed={item.done}
                   onChange={(e) => dispatch(editTodo(item.id, e.target.value))}
               />
-              {/* Delete button for existing todos */}
-              {selectedItems.includes(item.id) && (
-                  <DeleteButton onClick={() => handleDeleteSelected()}>Delete</DeleteButton>
-              )}
+              <DeleteButton onClick={() => handleDeleteTodo(item.id)}>Delete</DeleteButton>
             </Item>
         ))}
         <Item key="new">
@@ -98,7 +73,6 @@ const ItemList: React.FC = () => {
               value={newTodoText}
               onChange={(e) => setNewTodoText(e.target.value)}
           />
-          {/* Button to add a new todo */}
           <button onClick={handleAddTodo}>Add Todo</button>
         </Item>
       </List>
