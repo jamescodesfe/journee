@@ -2,14 +2,18 @@ import { Action } from "redux";
 
 export const ITEM_ADD = "ITEM_ADD";
 export const ITEM_EDIT = "ITEM_EDIT";
-export const ITEM_REMOVE = "ITEM_REMOVE";
 export const ITEM_TOGGLE_COMPLETED = "ITEM_TOGGLE_COMPLETED";
+export const ITEM_REMOVE = "ITEM_REMOVE";
+export const CLEAR_COMPLETED = "CLEAR_COMPLETED";
+export const CLEAR_ALL = "CLEAR_ALL";
 
 export type TodoAction =
     | AddTodoAction
     | EditTodoAction
+    | ToggleCompletedAction
     | RemoveTodoAction
-    | ToggleCompletedAction;
+    | ClearCompletedAction
+    | ClearAllAction;
 
 export interface AddTodoAction extends Action<typeof ITEM_ADD> {
   text: string;
@@ -31,6 +35,15 @@ export const editTodo = (itemId: string, text: string): EditTodoAction => ({
   text,
 });
 
+export interface ToggleCompletedAction extends Action<typeof ITEM_TOGGLE_COMPLETED> {
+  itemId: string;
+}
+
+export const toggleCompleted = (itemId: string): ToggleCompletedAction => ({
+  type: ITEM_TOGGLE_COMPLETED,
+  itemId,
+});
+
 export interface RemoveTodoAction extends Action<typeof ITEM_REMOVE> {
   itemId: string;
 }
@@ -40,11 +53,14 @@ export const removeTodo = (itemId: string): RemoveTodoAction => ({
   itemId,
 });
 
-export interface ToggleCompletedAction extends Action<typeof ITEM_TOGGLE_COMPLETED> {
-  itemId: string;
-}
+export interface ClearCompletedAction extends Action<typeof CLEAR_COMPLETED> {}
 
-export const toggleCompleted = (itemId: string): ToggleCompletedAction => ({
-  type: ITEM_TOGGLE_COMPLETED,
-  itemId,
+export const clearCompleted = (): ClearCompletedAction => ({
+  type: CLEAR_COMPLETED,
+});
+
+export interface ClearAllAction extends Action<typeof CLEAR_ALL> {}
+
+export const clearAll = (): ClearAllAction => ({
+  type: CLEAR_ALL,
 });

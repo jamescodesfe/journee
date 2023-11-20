@@ -1,4 +1,5 @@
-import { ITEM_ADD, ITEM_EDIT, ITEM_REMOVE, ITEM_TOGGLE_COMPLETED, TodoAction } from "./todoAC";
+import { Action } from "redux";
+import { ITEM_ADD, ITEM_EDIT, ITEM_TOGGLE_COMPLETED, ITEM_REMOVE, CLEAR_COMPLETED, CLEAR_ALL } from "./todoAC";
 import { getNewId } from "../utils";
 
 type Item = {
@@ -15,7 +16,7 @@ const initialState: State = {
   items: [],
 };
 
-const todoReducer = (state: State = initialState, action: TodoAction): State => {
+const todoReducer = (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case ITEM_ADD:
       return {
@@ -24,29 +25,43 @@ const todoReducer = (state: State = initialState, action: TodoAction): State => 
           {
             id: getNewId(),
             done: false,
-            text: action.text,
+            text: (action as any).text,
           },
         ],
       };
     case ITEM_EDIT:
-      const index = state.items.findIndex((item) => item.id === action.itemId);
-      // Feel free to use immutability-helper or an equivalent library.
+      const editAction = action as any;
+      const editIndex = state.items.findIndex((item) => item.id === editAction.itemId);
       return {
         items: [
-          ...state.items.slice(0, index),
-          { ...state.items[index], text: action.text },
-          ...state.items.slice(index + 1),
+          ...state.items.slice(0, editIndex),
+          { ...state.items[editIndex], text: editAction.text },
+          ...state.items.slice(editIndex + 1),
+        ],
+      };
+    case ITEM_TOGGLE_COMPLETED:
+      const toggleAction = action as any;
+      const toggleIndex = state.items.findIndex((item) => item.id === toggleAction.itemId);
+      return {
+        items: [
+          ...state.items.slice(0, toggleIndex),
+          { ...state.items[toggleIndex], done: !state.items[toggleIndex].done },
+          ...state.items.slice(toggleIndex + 1),
         ],
       };
     case ITEM_REMOVE:
+      const removeAction = action as any;
+      const removeIndex = state.items.findIndex((item) => item.id === removeAction.itemId);
       return {
-        items: state.items.filter((item) => item.id !== action.itemId),
+        items: [...state.items.slice(0, removeIndex), ...state.items.slice(removeIndex + 1)],
       };
-    case ITEM_TOGGLE_COMPLETED:
+    case CLEAR_COMPLETED:
       return {
-        items: state.items.map((item) =>
-            item.id === action.itemId ? { ...item, done: !item.done } : item
-        ),
+        items: state.items.filter((item) => !item.done),
+      };
+    case CLEAR_ALL:
+      return {
+        items: [],
       };
     default:
       return state;
