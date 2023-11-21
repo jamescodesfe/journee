@@ -20,6 +20,10 @@ const AddTaskMenuTxt = styled.span`
     font-weight: 300;
     margin-top: 5px;
     cursor: pointer;
+
+    @media only screen and (max-width: 968px) {
+        display: none;
+    }
 `;
 
 const HamburgerIcon = styled.div`
