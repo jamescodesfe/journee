@@ -8,6 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![desktop.png](public%2Fassets%2Freadme%2Fdesktop.png)
 
+![task.png](public%2Fassets%2Freadme%2Ftask.png)
+
 ## Things I fixed
 
 - Reworked the ToDo App and added addictional and missing functionality in the ItemList.tsx and Redux Files.
