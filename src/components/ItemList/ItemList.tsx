@@ -78,7 +78,7 @@ const ActionSection = styled.div`
 `;
 
 const CountText = styled.p`
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'Unbounded', sans-serif;
     font-weight: 300;
 `;
@@ -90,6 +90,12 @@ const ClearCompletedButton = styled.button`
     font-weight: 500;
     border: none;
     background-color: transparent;
+    padding-left: 0;
+    cursor: pointer;
+
+    &:hover {
+        color: #777;
+    }
 `;
 
 const ClearAllButton = styled.button`
@@ -98,6 +104,11 @@ const ClearAllButton = styled.button`
     font-weight: 500;
     border: none;
     background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+        color: #777;
+    }
 `;
 
 const ItemList: React.FC = () => {
