@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import OffCanvasMenu from "./components/OffCanvasMenu/OffCanvasMenu";
-import ButtonBgImg from "./styles/btn.png";
+import PosterImg from "./poster.png";
 
 // @ts-ignore
 import BgVideo from "./bg.mp4";
@@ -64,7 +64,7 @@ const App = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     return (
       <LayoutContainer>
-          <video autoPlay loop muted className="bg-vid">
+          <video autoPlay loop muted poster={PosterImg} className="bg-vid">
               <source src={BgVideo} type="video/mp4"/>
           </video>
           <NavBar onMenuClick={() => setMenuOpen(!menuOpen)} />

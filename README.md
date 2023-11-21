@@ -10,6 +10,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![task.png](public%2Fassets%2Freadme%2Ftask.png)
 
+![mobile-landing.png](public%2Fassets%2Freadme%2Fmobile-landing.png)
+
 ## Things I fixed
 
 - Reworked the ToDo App and added additional and missing functionality in the ItemList.tsx and Redux Files.
