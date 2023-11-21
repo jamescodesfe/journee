@@ -12,8 +12,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Things I fixed
 
-- Reworked the ToDo App and added addictional and missing functionality in the ItemList.tsx and Redux Files.
+- Reworked the ToDo App and added additional and missing functionality in the ItemList.tsx and Redux Files.
 - I implemented a basic flex layout that displays well across all devices
+- Added a Basic Layout & OffCanvas system
+- Added Meterial UI Icons to the ToDo App
 
 ## Requirements
 
