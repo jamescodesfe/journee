@@ -24,7 +24,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Used basic media queries to ensure all devices have conditional logic to ensure they display correctly.
 - Added a Basic Layout & OffCanvas system.
 - Added Meterial UI Icons to the ToDo App.
-- 
+
 ## Things I would still like to do
 
 - Abstract out the styled components into their own files
@@ -38,8 +38,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Rework the component library to rather use atomic based components.
 - Create HOC layout components using hooks and react Functional components.
 - Add in Sentry or some sort of Javascript debugging environment.
-- Add is an Error Boundry component.
+- Add in an Error Boundry component.
 - Create more dynamic components using more flexible props.
+
 ## Requirements
 
 - Node.js v16
