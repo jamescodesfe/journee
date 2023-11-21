@@ -22,9 +22,24 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Fixed the Redux Reducer and Actions files to implement new functionality and fix existing functionality.
 - I implemented a basic flex layout that displays well across all devices.
 - Used basic media queries to ensure all devices have conditional logic to ensure they display correctly.
-- Added a Basic Layout & OffCanvas system
-- Added Meterial UI Icons to the ToDo App
+- Added a Basic Layout & OffCanvas system.
+- Added Meterial UI Icons to the ToDo App.
+- 
+## Things I would still like to do
 
+- Abstract out the styled components into their own files
+- Add ESlint and Prettier to improve the developer experience.
+- Update the package libraries
+- Improve the Build process
+- Setup Storybook
+- Add styled components setup as a macro through webpack.
+- Add a styled system for theming. Add a flexbox styled components library like rebass or something. Or more specifically add styled system as a enterprise level design system styled components react implementation.
+- Re-work redux to rather use context api or recoil.
+- Rework the component library to rather use atomic based components.
+- Create HOC layout components using hooks and react Functional components.
+- Add in Sentry or some sort of Javascript debugging environment.
+- Add is an Error Boundry component.
+- Create more dynamic components using more flexible props.
 ## Requirements
 
 - Node.js v16
