@@ -15,6 +15,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Things I fixed
 
 - Initially the app didnt run. I had to fix it to run properly.
+- Designed a user flow diagram using Figma - illustrating the desired and expected user flow and actions required for an expected user objective outcome. 
+- Designed and conceptualised the UI in Figma.
 - Reworked the ToDo App that was initially broken.
 - Added additional and missing functionality in the ItemList.tsx.
 - Fixed the Redux Reducer and Actions files to implement new functionality and fix existing functionality.
