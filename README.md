@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Journee Frontend Coding Test
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+![userflow.png](public%2Fassets%2Freadme%2Fuserflow.png)
+
+![typography.png](public%2Fassets%2Freadme%2Ftypography.png)
+
+![desktop.png](public%2Fassets%2Freadme%2Fdesktop.png)
+
+## Things I fixed
+
+- Reworked the ToDo App and added addictional and missing functionality in the ItemList.tsx and Redux Files.
+- I implemented a basic flex layout that displays well across all devices
 
 ## Requirements
 
