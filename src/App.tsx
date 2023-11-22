@@ -2,18 +2,14 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import OffCanvasMenu from "./components/OffCanvasMenu/OffCanvasMenu";
 import PosterImg from "./poster.png";
+import NavBar from "./components/NavBar/NavBar";
 
 // @ts-ignore
 import BgVideo from "./bg.mp4";
-import NavBar from "./components/NavBar/NavBar";
 
 const LayoutContainer = styled.div`
     display: flex;
     flex-direction: column;
-`;
-
-const ContentContainer = styled.div`
-    display: flex;
 `;
 
 const TopSpacer = styled.div`

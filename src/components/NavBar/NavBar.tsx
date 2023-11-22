@@ -46,7 +46,6 @@ const NavBar: React.FC<NavBarProps> = ({ onMenuClick }) => {
                 </AddTaskMenuTxt>
             </AddTaskMenuContainer>
             <HamburgerIcon onClick={onMenuClick}>
-                {/* Add your hamburger menu icon SVG here */}
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 20H40" stroke="black" strokeWidth="2"></path>
                     <path d="M8 28H40" stroke="black" strokeWidth="2"></path>

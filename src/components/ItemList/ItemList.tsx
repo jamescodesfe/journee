@@ -47,11 +47,11 @@ const CustomInput = styled.input<{ completed?: boolean }>`
     vertical-align: middle;
 
     &::placeholder {
-        color: #999; /* placeholder text color */
+        color: #999;
     }
 
     &:focus {
-        border-bottom: 1px solid #333; /* dark grey bottom border on focus */
+        border-bottom: 1px solid #333;
     }
 `;
 
