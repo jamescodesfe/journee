@@ -41,10 +41,10 @@ const CustomInput = styled.input<{ completed?: boolean }>`
     border: none;
     outline: none;
     padding-right: 20px;
-    color: ${(props) => (props.completed ? '#999' : '#333')}; /* text color */
-    cursor: text; /* show text cursor */
-    text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')}; /* strikethrough if completed */
-    vertical-align: middle; /* center text vertically */
+    color: ${(props) => (props.completed ? '#999' : '#333')};
+    cursor: text;
+    text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')};
+    vertical-align: middle;
 
     &::placeholder {
         color: #999; /* placeholder text color */
